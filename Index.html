@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* background-color: #333; */
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        #logo {
+            /* Add your logo styles here */
+            width: 35px;
+            height: 35px;
+        }
+
+        .Banner {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #000;
+        }
+
+        .Text {
+            background: #000;
+            margin-top: 170px;
+        }
+
+        .Text h1,
+        h4 {
+            color: white
+        }
+
+        .Text button {
+            background: #000;
+            border: 1px solid white;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        #Banner1 {
+            width: 100%;
+            height: 70%;
+        }
+
+        .burger-menu {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .user-icon {
+            font-size: 24px;
+            color: white;
+        }
+
+        .menu-modal {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            /* Adjust this value to set the initial position */
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            transition: left 0.3s;
+            z-index: 1;
+        }
+
+        .menu-modal.open {
+            left: 0;
+        }
+
+        .menu-content {
+            padding: 70px 20px 20px;
+            /* Adjust this value to properly position the content */
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+
+        .menu-content a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+        }
+
+        @media screen and (max-width: 600px) {
+            .burger-menu.show {
+                display: block;
+            }
+        }
+
+        .burger-menu.hide {
+            display: none;
+        }
+
+        /* footer */
+
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            border: 0px solid white;
+            color: white;
+            margin-bottom: 50px;
+            width: 90%;
+            margin: auto;
+        }
+
+        .container>div {
+            padding: 10px;
+            border: 0px solid black;
+        }
+
+        .container>div:last-child {
+            margin-left: auto;
+        }
+
+        .Box1 {
+            border: 0px solid white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 20%;
+            font-family: HelveticaNowText;
+            font-size: 20px;
+            line-height: 32px;
+        }
+
+        .Box3 {
+            border: 0px solid white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 20%;
+            /* font-family: HelveticaNowDisplayBold; */
+            font-size: 15px;
+            line-height: 24px;
+            font-weight: 700;
+        }
+
+        .Box2 {
+            border: 0px solid white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 50%;
+            /* font-family: HelveticaNowText; */
+            font-size: 15px;
+            line-height: 24px;
+            color: #E8E8E8;
+        }
+
+        .container1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 0px solid white;
+            color: white;
+            margin-top: 20px;
+            width: 90%;
+            margin: auto;
+
+        }
+
+
+        .container img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border: 0px solid #ccc;
+            /* border-radius: 50%; */
+            transition: transform 0.2s;
+
+        }
+
+
+
+        /* MID*/
+        .Mid {
+            width: 90%;
+            margin: auto;
+        }
+
+        .Mid img {
+            width: 100%;
+            height: 70%;
+        }
+
+        .Mid h2,
+        h1,
+        span {
+            color: white
+        }
+
+        /* GRID STYLING */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* Three cards in each row for desktop */
+            gap: 20px;
+            /* Adjust the gap as needed */
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+                /* Two cards in each row for medium screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+                /* One card in each row for mobile screens */
+            }
+        }
+
+        /* Additional styling for cards, adjust as needed */
+        .grid-container>div {
+            width: 80%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .grid-container a {
+            text-align: center;
+        }
+
+        /* Styling for images, headers, and spans */
+        .grid-container img {
+            max-width: 100%;
+        }
+
+        .grid-container h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .grid-container span {
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .grid-container h1 {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Last */
+        .Last {
+            width: 90%;
+            margin: auto;
+        }
+
+        .grid-container2 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            /* Adjust the gap as needed */
+            /* margin-top: 20px; */
+        }
+
+        .Last img {
+            width: 100%;
+            height: auto;
+            border-radius: 3px;
+        }
+
+        @media screen and (max-width: 992px) {
+            .grid-container2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .grid-container2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Center the "VIEW MORE" link */
+        .Last>div {
+            text-align: center;
+            color: white;
+        }
+
+        .Last>div a {
+            color: white;
+            text-decoration-color: yellow;
+            text-decoration-style: solid;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div class="header">
+        <div class="burger-menu show" id="burger-menu">&#9776;</div>
+        <img src="./Image/Logo1.png" alt="Logo" id="logo">
+        <img src="./Image/user.svg">
+    </div>
+
+    <div class="menu-modal" id="menu-modal">
+        <div class="menu-content">
+            <span class="close-button" id="close-button" onclick="closeMenu()">&times;</span>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- MIDDLE SECTION -->
+    <div class="Banner">
+        <div>
+            <img src="./Image/Banner1.jpg" id="Banner1" alt="">
+        </div>
+        <div class="Text">
+            <h4>Grand Theft Auto Online </h4>
+            <h1>Halloween in GTA Online</h1>
+            <button>WATCH NOW</button>
+        </div>
+
+    </div>
+    <div class="Mid">
+        <h1>Newswire</h1>
+        <div class="grid-container">
+            <div>
+                <img src="https://media-rockstargames-com.akamaized.net/tina-uploads/posts/39o99a77112118/523a25c4a780d4a238d811bee0148bba673fcb39.jpg"
+                    alt="">
+                <h2>GTA Online</h2><span>November 2, 2023</span>
+                <h1>Opportunity Knocks with 2X GTA$ and RP on Short Trips and Security Contracts</h1>
+
+            </div>
+            <div>
+                <img src="./Image/Banner1.jpg" alt="">
+                <h2>GTA Online</h2><span>October 26, 2023</span>
+                <h1>Paranormal and Supernatural Reports Rise as Halloween Arrives</h1>
+
+
+            </div>
+            <div>
+                <img src="https://i.gadgets360cdn.com/products/large/grand-theft-auto-1000x1243-1645444821.jpeg" alt="">
+                <h2>GTA Online</h2><span>October 19, 2023</span>
+                <h1>The Halloween Horrors Continue in GTA Online</h1>
+
+            </div>
+            <!--  -->
+            <div>
+                <img src="https://i.ytimg.com/vi/ksTuGW5vH5o/maxresdefault.jpg" alt="">
+                <h2>GTA Online</h2><span>November 2, 2023</span>
+                <h1>Opportunity Knocks with 2X GTA$ and RP on Short Trips and Security Contracts</h1>
+
+            </div>
+            <div>
+                <img src="https://images.squarespace-cdn.com/content/v1/5e949a92e17d55230cd1d44f/a6b49ab3-56d5-428b-89b5-bcc5a0ac1b8b/Grandtheftauto1x1+2.png"
+                    alt="">
+                <h2>GTA Online</h2><span>October 26, 2023</span>
+                <h1>Paranormal and Supernatural Reports Rise as Halloween Arrives</h1>
+
+
+            </div>
+            <div>
+                <img src="https://gamerspotstorage01.s3.ap-south-1.amazonaws.com/wp-content/uploads/2023/05/23134358/GTAV.jpg"
+                    alt="">
+                <h2>GTA Online</h2><span>October 19, 2023</span>
+                <h1>The Halloween Horrors Continue in GTA Online</h1>
+
+            </div>
+        </div>
+        <br>
+        <div style="text-align: center; color: white;text-decoration: none;"> <!-- Add this container for centering -->
+            <a style="color: white;text-decoration-color: yellow; text-decoration-style: solid;" href="#">VIEW MORE</a>
+        </div>
+    </div>
+
+    <div class="Last">
+        <h1>Featured Games</h1>
+        <br>
+        <br>
+        <div class="grid-container2">
+            <div>
+                <img src="https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/o488o/f4f329a95476cc66a3229df1c15b56af26b76974.png"
+                    alt="">
+
+            </div>
+            <div>
+                <img src="https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/k95o9/7a6403beebf1b88e44a497c06073f9f2cf171079.png"
+                    alt="">
+
+
+
+            </div>
+            <div>
+                <img src="https://media-rockstargames-com.akamaized.net/tina-uploads/tina-modules/aakk/4fbc0d924b152e6e193524311264a1e772902c64.png"
+                    alt="">
+
+
+            </div>
+            <!--  -->
+            <div>
+                <img src="https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/6e95dc7d8babe829a4c0043a518f640c.jpg"
+                    alt="">
+
+            </div>
+
+        </div>
+        <br>
+        <br>
+        
+        <br>
+        
+        <div style="text-align: center; color: white;text-decoration: none;"> <!-- Add this container for centering -->
+            <a style="color: white;text-decoration-color: yellow; text-decoration-style: solid;" href="#">VIEW MORE</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+
+    <!-- FOOTER -->
+    <div class="container">
+        <div class="Box1">
+            <div>Contact</div>
+            <div>Careers</div>
+            <div>Subscribe</div>
+        </div>
+        <div>English</div>
+    </div>
+    <br />
+    <div class="container">
+        <div class="Box2">
+            <div>Corporate</div>
+            <div>Privacy</div>
+            <div>Cookie Settings</div>
+            <div>Cookie Policy</div>
+            <div>Legal</div>
+            <div>Do Not Sell My Personal Information</div>
+        </div>
+        <div>
+            <img src="https://pngimg.com/d/twitter_PNG15.png" alt="twitter" />
+            <img src="https://cdn.logojoy.com/wp-content/uploads/20200406092725/youtube-icon.png" alt="u tube" />
+            <img src="https://thumbs.dreamstime.com/b/mobile-173831891.jpg" alt="FB" />
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAclBMVEUAAAD///82Njarq6uWlpaAgIDt7e0SEhIsLCyfn5/Dw8Pm5uZra2uPj4/AwMDh4eHb29vz8/P29vYnJycKCgqHh4fLy8sfHx+ysrJkZGQ7Ozu4uLgpKSmmpqZ2dnZUVFRKSkrS0tJfX19EREScnJwYGBjLbw4mAAAEXklEQVR4nO3d6VYiQQwF4FJ0WMZtgBF0XMbt/V9xpsU+x6OVdAVSnaTOvb9byAcJBQ12pZTNw3YSPNtVXtbnx1H4HLPAR+vyFMILL6zLUwgvtK5OI6zwt3V1GmGFV9bVaYQT/rUuTiWccGJdnEo4YQOL4RErvLGuTSeM8Nq6Np0wQuvSlEILz61LUwot/GldmlJIYQtvut9DCrfWlWmFEk5/WVemFUr4YF2YWijhk3VhaiGEG+u69EII59Z16YUQNvM6QwmfiaMvTvzmdSkRUmegTonXJRchPuxlhRvi4XAtnEqE5BmoZoTkGahWhLcUsBkhfQaqFSH1OtOMkDkD1YiQOQPVhnBFAxsRcmeg2hBeti5kz0A1IfzTunBNL4aNCI85IISmgbAPhH4DYR8I/QbCPhD6DYR9IPQbCPtA6DcQ9oHQbyDsoy9cLXK5zh+8zR776Fs4y99U/uB8lWcNCfM/aoUQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQwlJC4xfzBIf9n5u08l5P8wafZY299C8cKhH0g9BsI+0DoN9RuDu0IqcuuNiMkryvbipC+oGUjQuaKnW0IuUuSNiFkr7nagpDf468B4T1b8tXXw+MJB4Drr8eHE/I74lx+/4NoQv4ZzACjCfkN/r7NYJdYQn473+8z2CWUkAfmWjTFEvItSgAjCfnN7/ItmiIJ+a1uqWcwkPBsT2AYIQ/MLhMfCSIcAFIz2CWGkN8TnWnRFETI73PLA0MIeSA3g10CCAdalJvBLv6F9K5w78DBv3cvfGG3iRlq0eRf+MLukMouEx9xLpyxz+BwiybvwtvDgb6FM+ILtF0KZrCLZ+Em/2ubHlgwg10cC6mvQHcpa9HkWci3aDHQr3DNt2j5DbkVcpsWCp5Bv0I14IDwoRZgIGtyD+YughZNQ8LF67w87MNxLLih+SsPLFwmioSiLJi7WbFvL0URtaiu8IK+l5kdcByh4jMom8GxhJpA2QyOJLwzbNFRhJYzOIrQtkVHEBouE+MIrVu0ulDxRUa+TIwhNJ/B2kL7GawsdDCDdYUbBzNYVajZonvPYE2h8Vu1+kLFGTyoRasJXSwTNYU+lomKQifLRD2h6Sf6MYSeZrCK0NUM1hD6msEKQmczqC9016LaQn8tqixc+2vRNPSLI1Gu2S9tRVFZJvrM5JmS/7/J1LyR3IOib78sxMDlxrpmWeTCG+uShREL760rlkYqVHxlHClC4fLNumBxhMKiSwb5ikwYbgiTUBhvCJNMuJxaV7tPJMJoK+EuAmHEIUwS4ZN1qXumWBhwJdylWBhzCFO5cG5d6N4pFEYdwlQqXK6s69w/ZcJn6zIPSJEw7hCmMmHgIUxFwqX92aRDUiAMuxLuMiwMPYSpQBjyM+HnDAmXd9YVHpohYfAhTIPCoJ8JP4f/3iL8EP7P6YTJ1slXFP8AIUyEtyCS2yEAAAAASUVORK5CYII="
+                alt="twitch" />
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="container1">
+        <div>Rockstar Games</div>
+        <div class="Box3">
+            <div>New York</div>
+            <div>London</div>
+            <div>Paris</div>
+            <div> Bogotá</div>
+        </div>
+        <div>MCMXCVIII</div>
+    </div>
+    <script>
+        const burgerMenu = document.getElementById('burger-menu');
+        const menuModal = document.getElementById('menu-modal');
+
+        burgerMenu.addEventListener('click', () => {
+            menuModal.classList.add('open');
+            burgerMenu.classList.remove('show');
+            burgerMenu.classList.add('hide');
+            // Add event listener to close modal when clicking outside of it
+            document.addEventListener('click', closeOnOutsideClick);
+        });
+
+        function closeMenu() {
+            menuModal.classList.remove('open');
+            burgerMenu.classList.remove('hide');
+            burgerMenu.classList.add('show');
+            // Remove event listener when modal is closed
+            document.removeEventListener('click', closeOnOutsideClick);
+        }
+
+        function closeOnOutsideClick(event) {
+            if (!menuModal.contains(event.target) && event.target !== burgerMenu) {
+                closeMenu();
+            }
+        }
+    </script>
+</body>
+
+</html>
