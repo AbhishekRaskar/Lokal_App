@@ -5,7 +5,7 @@ Rockstar Games![Screenshot (265)](https://github.com/AbhishekRaskar/Lokal_App/as
 
 ## Live Demo
 
-Check out the live site: [ShopKey.com - Live Demo](https://654a4c851aa1093955a919ed--beamish-starlight-664097.netlify.app/)
+Check out the live site: [RockStars Games - Live Demo](https://654a4c851aa1093955a919ed--beamish-starlight-664097.netlify.app/)
 
 ## Built with
 
